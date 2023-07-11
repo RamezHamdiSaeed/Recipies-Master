@@ -7,3 +7,4 @@ a 3D game do demonstrate the basics and advanced topics about unity like games n
 - add idle and walk animations
 - using ready to use animator Controller
 - setup Cinemachine to be above the main camera to ad noise
+- setup medern input system package parallel with the legacy one to do game prototying and production level development
