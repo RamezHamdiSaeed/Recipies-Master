@@ -28,8 +28,8 @@ public class Player : MonoBehaviour {
         inputVector = inputVector.normalized;
         Vector3 moveDir = new Vector3(inputVector.x,0,inputVector.y);
         //! To make specific statement frame rate independent we need to multiply by Time.deltaTime or using FixedUpdate as an alternative for Update
-        isWalking = moveDir != Vector3.zero;
         transform.position +=moveDir*moveSpeed*Time.deltaTime;
+        isWalking = moveDir != Vector3.zero;
         float rotationSpeed = 20f;
         //! we need to make the player look at the direction as same as the moveDir but sequentionally or animated with same initial and final speed as the rotationSpeed
         //! To do so we are  using Vector3.Lerp or slerp 
