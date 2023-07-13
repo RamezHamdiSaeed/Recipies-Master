@@ -13,16 +13,13 @@ public class Player : MonoBehaviour {
     private float moveSpeed = 7f;
     // to give us the ability to interact to counters without walking we need to use the below variable when the io returned with (0,0)
     private Vector3 lastInteract;
-    private void Update() {
-     HandleMovement();
-     HandleInteracitons();
+    private void Start() {
+        playerInput.OnInteractAction += PlayerInput_OnInteractAction;
     }
-    private void HandleInteracitons() {
-        Vector2 inputVector = playerInput.GetMovementVectorNormalized();
-        Vector3 moveDir = new Vector3(inputVector.x, 0, inputVector.y);
-        if(moveDir != Vector3.zero)        lastInteract = moveDir;
+
+    private void PlayerInput_OnInteractAction(object sender, System.EventArgs e) {
         float interactDistance = 2f;
-        if (Physics.Raycast(transform.position, lastInteract, out RaycastHit counter ,interactDistance,layerMask)) {
+        if (Physics.Raycast(transform.position, lastInteract, out RaycastHit counter, interactDistance, layerMask)) {
             if (counter.transform.TryGetComponent<ClearCounter>(out ClearCounter clearCounter)) {
                 clearCounter.InteractMessage();
             }
@@ -30,6 +27,16 @@ public class Player : MonoBehaviour {
         else {
             Debug.Log("_");
         }
+    }
+
+    private void Update() {
+     HandleMovement();
+     HandleLastInteract();
+    }
+    private void HandleLastInteract() {
+        Vector2 inputVector = playerInput.GetMovementVectorNormalized();
+        Vector3 moveDir = new Vector3(inputVector.x, 0, inputVector.y);
+        if(moveDir != Vector3.zero)        lastInteract = moveDir;
     }
     private void HandleMovement() {
         float moveDistance = moveSpeed * Time.deltaTime;
