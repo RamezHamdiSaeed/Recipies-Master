@@ -11,3 +11,5 @@ a 3D game do demonstrate the basics and advanced topics about unity like games n
 - make the player collide with other collider objects and how to make the player avoid the collider when the game attempt to move diagonally by make him move horizontally or vertically only
 - how to interact with specific game objects using layers not tags and how to deal with each of them separately
 - how to use events and listeners with delegates to avoid checking something if it happened or not yet within each frame 
+- what is singletone design pattern .
+- how to add the visual selected clear counter effect.

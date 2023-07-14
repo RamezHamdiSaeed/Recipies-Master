@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -5,6 +6,9 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour {
+    //! make this script a singletone to be accessible from any script in the project without reference it again and again and again
+    public static Player Instance { get;private set; }
+    public event EventHandler<OnSelectedClearCounterChangedEventArgs> onSelectedClearCounterChanged;
     [SerializeField]
     private PlayerInput playerInput;
     [SerializeField]
@@ -13,19 +17,21 @@ public class Player : MonoBehaviour {
     private float moveSpeed = 7f;
     // to give us the ability to interact to counters without walking we need to use the below variable when the io returned with (0,0)
     private Vector3 lastInteract;
+    private ClearCounter selectedClearCounter;
+    public class OnSelectedClearCounterChangedEventArgs : EventArgs {
+    public  ClearCounter selectedClearCounter;
+    }
+    private void Awake() {
+        if (Instance != null) Debug.LogError("There is more than single instance");
+        Instance = this;
+    }
     private void Start() {
         playerInput.OnInteractAction += PlayerInput_OnInteractAction;
     }
 
     private void PlayerInput_OnInteractAction(object sender, System.EventArgs e) {
-        float interactDistance = 2f;
-        if (Physics.Raycast(transform.position, lastInteract, out RaycastHit counter, interactDistance, layerMask)) {
-            if (counter.transform.TryGetComponent<ClearCounter>(out ClearCounter clearCounter)) {
-                clearCounter.InteractMessage();
-            }
-        }
-        else {
-            Debug.Log("_");
+        if (selectedClearCounter != null) {
+            selectedClearCounter.InteractMessage();
         }
     }
 
@@ -36,7 +42,18 @@ public class Player : MonoBehaviour {
     private void HandleLastInteract() {
         Vector2 inputVector = playerInput.GetMovementVectorNormalized();
         Vector3 moveDir = new Vector3(inputVector.x, 0, inputVector.y);
+        float interactDistance = 2f;
+        if (Physics.Raycast(transform.position, lastInteract, out RaycastHit counter, interactDistance, layerMask)) {
+            if (counter.transform.TryGetComponent<ClearCounter>(out ClearCounter clearCounter)) {
+                if (selectedClearCounter != clearCounter) SetSelectedClearCounter(clearCounter);
+            }
+            else SetSelectedClearCounter(null);
+        }
+        else {
+            SetSelectedClearCounter(null);
+        }
         if(moveDir != Vector3.zero)        lastInteract = moveDir;
+        Debug.Log(selectedClearCounter);
     }
     private void HandleMovement() {
         float moveDistance = moveSpeed * Time.deltaTime;
@@ -68,5 +85,12 @@ public class Player : MonoBehaviour {
     }
    public bool IsWalking() {
         return isWalking;
+    }
+    private void SetSelectedClearCounter(ClearCounter selectedClearCounter) {
+        this.selectedClearCounter = selectedClearCounter;
+        onSelectedClearCounterChanged?.Invoke(this, new OnSelectedClearCounterChangedEventArgs
+        {
+            selectedClearCounter = selectedClearCounter
+        });
     }
 }
