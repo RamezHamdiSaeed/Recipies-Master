@@ -506,6 +506,12 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!4 &642765581 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6176644922250641779, guid: 19c3d6ccd29cfbd449e15785b15170a2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1458842334}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +727,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8455327097997236084, guid: 19c3d6ccd29cfbd449e15785b15170a2,
+        type: 3}
+      propertyPath: TopPoint
+      value: 
+      objectReference: {fileID: 642765581}
+    - target: {fileID: 8455327097997236084, guid: 19c3d6ccd29cfbd449e15785b15170a2,
+        type: 3}
+      propertyPath: KitchenObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 19b2817f4def14849819ba0ac7a9ed50,
+        type: 2}
+    - target: {fileID: 8455327097997236084, guid: 19c3d6ccd29cfbd449e15785b15170a2,
+        type: 3}
+      propertyPath: kitchenObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 4dbb4a445dcbd724d96b9108c11f5c97,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19c3d6ccd29cfbd449e15785b15170a2, type: 3}
 --- !u!1 &1598230563 stripped
@@ -1023,5 +1046,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8455327097997236084, guid: 19c3d6ccd29cfbd449e15785b15170a2,
+        type: 3}
+      propertyPath: TopPoint
+      value: 
+      objectReference: {fileID: 2408985749465430362}
+    - target: {fileID: 8455327097997236084, guid: 19c3d6ccd29cfbd449e15785b15170a2,
+        type: 3}
+      propertyPath: TomatoPrefab
+      value: 
+      objectReference: {fileID: 6122490128481006061, guid: c031d4ced634f1c4c84d6fb7ee77e51e,
+        type: 3}
+    - target: {fileID: 8455327097997236084, guid: 19c3d6ccd29cfbd449e15785b15170a2,
+        type: 3}
+      propertyPath: KitchenObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 4dbb4a445dcbd724d96b9108c11f5c97,
+        type: 2}
+    - target: {fileID: 8455327097997236084, guid: 19c3d6ccd29cfbd449e15785b15170a2,
+        type: 3}
+      propertyPath: kitchenObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 19b2817f4def14849819ba0ac7a9ed50,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19c3d6ccd29cfbd449e15785b15170a2, type: 3}
+--- !u!4 &2408985749465430362 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6176644922250641779, guid: 19c3d6ccd29cfbd449e15785b15170a2,
+    type: 3}
+  m_PrefabInstance: {fileID: 2408985749465430361}
+  m_PrefabAsset: {fileID: 0}
