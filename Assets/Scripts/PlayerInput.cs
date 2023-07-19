@@ -8,7 +8,7 @@ public class PlayerInput : MonoBehaviour
     private GameInputActions playerInputs;
     public event EventHandler OnInteractAction;
     private void Awake() {
-        //* we create global object to deel with inputActions related to player
+        //* we create global object to deal with inputActions related to player
         playerInputs = new GameInputActions();
         playerInputs.Player.Enable();
         playerInputs.Player.Interact.performed += Interact_performed;

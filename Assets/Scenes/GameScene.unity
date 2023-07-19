@@ -561,6 +561,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &892985784 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8455327097997236084, guid: 19c3d6ccd29cfbd449e15785b15170a2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1458842334}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afd3dbf570fbd2a4384aa5484b11f290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1092799876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -744,6 +756,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 4dbb4a445dcbd724d96b9108c11f5c97,
         type: 2}
+    - target: {fileID: 8455327097997236084, guid: 19c3d6ccd29cfbd449e15785b15170a2,
+        type: 3}
+      propertyPath: secondClearCounter
+      value: 
+      objectReference: {fileID: 892985784}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19c3d6ccd29cfbd449e15785b15170a2, type: 3}
 --- !u!1 &1598230563 stripped
@@ -986,6 +1003,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2356873648271252607, guid: 19c3d6ccd29cfbd449e15785b15170a2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4140738740061547212, guid: 19c3d6ccd29cfbd449e15785b15170a2,
         type: 3}
       propertyPath: m_Name
@@ -1046,6 +1068,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7695322548355988378, guid: 19c3d6ccd29cfbd449e15785b15170a2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8455327097997236084, guid: 19c3d6ccd29cfbd449e15785b15170a2,
         type: 3}
       propertyPath: TopPoint
@@ -1069,6 +1096,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 19b2817f4def14849819ba0ac7a9ed50,
         type: 2}
+    - target: {fileID: 8455327097997236084, guid: 19c3d6ccd29cfbd449e15785b15170a2,
+        type: 3}
+      propertyPath: secondClearCounter
+      value: 
+      objectReference: {fileID: 892985784}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19c3d6ccd29cfbd449e15785b15170a2, type: 3}
 --- !u!4 &2408985749465430362 stripped

@@ -9,7 +9,7 @@ public class SelectedClearCounter : MonoBehaviour
     private GameObject selectedCounterVisual;
 
     private void Start() {
-        Player.Instance.onSelectedClearCounterChanged += Player_onSelectedClearCounterChanged;
+        Player.Instance.OnSelectedClearCounterChanged += Player_onSelectedClearCounterChanged;
         clearCounter = GetComponentInParent<ClearCounter>();
         
     }

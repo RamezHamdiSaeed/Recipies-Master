@@ -14,4 +14,5 @@ a 3D game do demonstrate the basics and advanced topics about unity like games n
 - What is singletone design pattern .
 - How to add the visual selected clear counter effect.
 - How to be friendly with designers by collecting all assets into collections to organise the assets and be able to update when there are updates by the designers
-- how to spown scriptable objects (Kitchen Objects) and identify them separately when they have been loaded in the scene .
+- How to spown scriptable objects (Kitchen Objects) and identify them separately when they have been loaded in the scene .
+- How to move the kitchen object from counter to another and make insure that there is no more than kitchen object on the counter.

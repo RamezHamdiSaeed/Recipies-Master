@@ -6,15 +6,15 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour {
-    //! make this script a singletone to be accessible from any script in the project without reference it again and again and again
+    //! make this script a singleton to be accessible from any script in the project without reference it again and again and again
     public static Player Instance { get;private set; }
-    public event EventHandler<OnSelectedClearCounterChangedEventArgs> onSelectedClearCounterChanged;
+    public event EventHandler<OnSelectedClearCounterChangedEventArgs> OnSelectedClearCounterChanged;
     [SerializeField]
     private PlayerInput playerInput;
     [SerializeField]
     private LayerMask layerMask;
     private bool isWalking;
-    private float moveSpeed = 7f;
+    private readonly float moveSpeed = 7f;
     // to give us the ability to interact to counters without walking we need to use the below variable when the io returned with (0,0)
     private Vector3 lastInteract;
     private ClearCounter selectedClearCounter;
@@ -31,7 +31,7 @@ public class Player : MonoBehaviour {
 
     private void PlayerInput_OnInteractAction(object sender, System.EventArgs e) {
         if (selectedClearCounter != null) {
-            selectedClearCounter.InteractMessage();
+            selectedClearCounter.Interact();
         }
     }
 
@@ -53,7 +53,6 @@ public class Player : MonoBehaviour {
             SetSelectedClearCounter(null);
         }
         if(moveDir != Vector3.zero)        lastInteract = moveDir;
-        Debug.Log(selectedClearCounter);
     }
     private void HandleMovement() {
         float moveDistance = moveSpeed * Time.deltaTime;
@@ -88,7 +87,7 @@ public class Player : MonoBehaviour {
     }
     private void SetSelectedClearCounter(ClearCounter selectedClearCounter) {
         this.selectedClearCounter = selectedClearCounter;
-        onSelectedClearCounterChanged?.Invoke(this, new OnSelectedClearCounterChangedEventArgs
+        OnSelectedClearCounterChanged?.Invoke(this, new OnSelectedClearCounterChangedEventArgs
         {
             selectedClearCounter = selectedClearCounter
         });

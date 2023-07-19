@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be909c14ca215041ade63644117d8f8, type: 3}
   m_Name: Cheese Block
   m_EditorClassIdentifier: 
-  kitchenObject: {fileID: 1555042980285564402, guid: 107e52cf903398a4a95d6e6be908df5c,
-    type: 3}
+  prefab: {fileID: 1555042980285564402, guid: 107e52cf903398a4a95d6e6be908df5c, type: 3}
   sprite: {fileID: 21300000, guid: da2d04fe27b94e34ea0b624569b48a6f, type: 3}
   objectName: Cheese Block
