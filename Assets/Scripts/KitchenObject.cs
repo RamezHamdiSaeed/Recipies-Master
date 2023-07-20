@@ -1,3 +1,5 @@
+// Ignore Spelling: Getkitchen
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,19 +8,19 @@ public class KitchenObject : MonoBehaviour
 {
     [SerializeField]
     private KitchenObjectsSO prefabKitchenObject;
-    private ClearCounter clearCounter;
-    public void SetClearCounter(ClearCounter clearCounter) {
-        if (this.clearCounter != null) this.clearCounter.ClearSpownKitchenObject();
-        this.clearCounter = clearCounter;
-        if (clearCounter.HasSpownKitchenObject()) {
-            Debug.LogError("the target (second clear counter) has spownKitchenObject");
+    private IKitchenObjectParent kitchenObjectParent;
+    public void SetKitchenObjectParent(IKitchenObjectParent kitchenObjectParent) {
+        if (this.kitchenObjectParent != null) this.kitchenObjectParent.ClearKitchenObjectParent();
+        this.kitchenObjectParent = kitchenObjectParent;
+        if (this.kitchenObjectParent.HasKitchenObjectParent()) {
+            Debug.LogError("the target has spownKitchenObject");
         }
         //! the below statement to transform the visual prefab to topPoint object in the hierarchy
-            clearCounter.SetSpownKitchenObject(this);
-            transform.parent = clearCounter.GetKitchenObjectFollowTransform();
+            this.kitchenObjectParent.SetKitchenObjectParent(this);
+        transform.parent = this.kitchenObjectParent.GetKitchenObjectFollowTransform();
             transform.localPosition = Vector3.zero;
     }
-    public ClearCounter GetClearCounter() {
-        return clearCounter;
+    public IKitchenObjectParent GetkitchenObjectParent() {
+        return kitchenObjectParent;
     }
 }

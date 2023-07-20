@@ -16,3 +16,4 @@ a 3D game do demonstrate the basics and advanced topics about unity like games n
 - How to be friendly with designers by collecting all assets into collections to organise the assets and be able to update when there are updates by the designers
 - How to spown scriptable objects (Kitchen Objects) and identify them separately when they have been loaded in the scene .
 - How to move the kitchen object from counter to another and make insure that there is no more than kitchen object on the counter.
+- How to use interface to make reference for counters with player and make them both share the same functionalities logic and prepared for different implementations for each of them.

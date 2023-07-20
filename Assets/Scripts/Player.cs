@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour,IKitchenObjectParent {
     //! make this script a singleton to be accessible from any script in the project without reference it again and again and again
     public static Player Instance { get;private set; }
     public event EventHandler<OnSelectedClearCounterChangedEventArgs> OnSelectedClearCounterChanged;
@@ -13,8 +13,12 @@ public class Player : MonoBehaviour {
     private PlayerInput playerInput;
     [SerializeField]
     private LayerMask layerMask;
+    [SerializeField]
+    private Transform kitchenObjectHandHeld;
     private bool isWalking;
     private readonly float moveSpeed = 7f;
+    private KitchenObject kitchenObject;
+
     // to give us the ability to interact to counters without walking we need to use the below variable when the io returned with (0,0)
     private Vector3 lastInteract;
     private ClearCounter selectedClearCounter;
@@ -31,7 +35,7 @@ public class Player : MonoBehaviour {
 
     private void PlayerInput_OnInteractAction(object sender, System.EventArgs e) {
         if (selectedClearCounter != null) {
-            selectedClearCounter.Interact();
+            selectedClearCounter.Interact(this);
         }
     }
 
@@ -91,5 +95,17 @@ public class Player : MonoBehaviour {
         {
             selectedClearCounter = selectedClearCounter
         });
+    }
+    public Transform GetKitchenObjectFollowTransform() {
+        return kitchenObjectHandHeld;
+    }
+    public void ClearKitchenObjectParent() {
+        kitchenObject = null;
+    }
+    public bool HasKitchenObjectParent() {
+        return kitchenObject != null;
+    }
+    public void SetKitchenObjectParent(KitchenObject kitchenObject) {
+        this.kitchenObject = kitchenObject;
     }
 }
