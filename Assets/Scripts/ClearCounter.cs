@@ -12,7 +12,7 @@ public class ClearCounter : BaseCounter
             player.GetKitchenObject().SetKitchenObjectParent(this);
         }
         else if (this.HasKitchenObjectInParent()&& !player.HasKitchenObjectInParent()) {
-            this.GetKitchenObject().SetKitchenObjectParent(player);
+            GetKitchenObject().SetKitchenObjectParent(player);
         }
         else Debug.Log("No Element To Pick Up Or Drop");
     }
