@@ -6,8 +6,9 @@ using UnityEngine;
 
 public interface IKitchenObjectParent
 {
-    public Transform GetKitchenObjectFollowTransform();
-        public void ClearKitchenObjectParent();
-        public bool HasKitchenObjectParent();
-        public void SetKitchenObjectParent(KitchenObject kitchenObject);
+        public Transform GetKitchenObjectFollowTransform();
+        public KitchenObject GetKitchenObject();
+        public void ClearKitchenObjectInParent();
+        public bool HasKitchenObjectInParent();
+        public void SetKitchenObjectInParent(KitchenObject kitchenObject);
 }

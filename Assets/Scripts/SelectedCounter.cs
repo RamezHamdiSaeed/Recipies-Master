@@ -2,30 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectedClearCounter : MonoBehaviour
+public class SelectedCounter : MonoBehaviour
 {
-    private ClearCounter clearCounter;
     [SerializeField]
-    private GameObject selectedCounterVisual;
+    private BaseCounter counter;
+    [SerializeField]
+    private GameObject[] selectedCounterVisuals;
 
     private void Start() {
         Player.Instance.OnSelectedClearCounterChanged += Player_onSelectedClearCounterChanged;
-        clearCounter = GetComponentInParent<ClearCounter>();
-        
     }
 
     private void Player_onSelectedClearCounterChanged(object sender, Player.OnSelectedClearCounterChangedEventArgs e) {
-        if (e.selectedClearCounter == clearCounter) {
+        if (e.selectedCounter == counter) {
             Show();
         }
         else Hide();
     }
     private void Show() {
-
-        selectedCounterVisual.SetActive(true);
+        foreach (GameObject gameObject in selectedCounterVisuals) {
+            gameObject.SetActive(true);
+        }
     }
     private void Hide() {
-
-        selectedCounterVisual.SetActive(false);
+        foreach (GameObject gameObject in selectedCounterVisuals) {
+            gameObject.SetActive(false);
+        }
     }
 }

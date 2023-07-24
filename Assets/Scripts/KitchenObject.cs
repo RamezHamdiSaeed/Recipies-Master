@@ -10,13 +10,13 @@ public class KitchenObject : MonoBehaviour
     private KitchenObjectsSO prefabKitchenObject;
     private IKitchenObjectParent kitchenObjectParent;
     public void SetKitchenObjectParent(IKitchenObjectParent kitchenObjectParent) {
-        if (this.kitchenObjectParent != null) this.kitchenObjectParent.ClearKitchenObjectParent();
+        if (this.kitchenObjectParent != null) this.kitchenObjectParent.ClearKitchenObjectInParent();
         this.kitchenObjectParent = kitchenObjectParent;
-        if (this.kitchenObjectParent.HasKitchenObjectParent()) {
-            Debug.LogError("the target has spownKitchenObject");
+        if (this.kitchenObjectParent.HasKitchenObjectInParent()) {
+            Debug.LogError("the target has spawnKitchenObject");
         }
         //! the below statement to transform the visual prefab to topPoint object in the hierarchy
-            this.kitchenObjectParent.SetKitchenObjectParent(this);
+            this.kitchenObjectParent.SetKitchenObjectInParent(this);
         transform.parent = this.kitchenObjectParent.GetKitchenObjectFollowTransform();
             transform.localPosition = Vector3.zero;
     }

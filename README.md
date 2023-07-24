@@ -17,3 +17,5 @@ a 3D game do demonstrate the basics and advanced topics about unity like games n
 - How to spown scriptable objects (Kitchen Objects) and identify them separately when they have been loaded in the scene .
 - How to move the kitchen object from counter to another and make insure that there is no more than kitchen object on the counter.
 - How to use interface to make reference for counters with player and make them both share the same functionalities logic and prepared for different implementations for each of them.
+- How to make Prefab Variant from Prefab as a Base Prefab to create multiple prefabs from it (as a template) then we made Container Counter and make it and the cleare counter extends from the BaseCounter
+- How to implement Interact with Clear Counters and Container Counters.

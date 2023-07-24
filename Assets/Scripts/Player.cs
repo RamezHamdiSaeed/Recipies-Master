@@ -21,9 +21,9 @@ public class Player : MonoBehaviour,IKitchenObjectParent {
 
     // to give us the ability to interact to counters without walking we need to use the below variable when the io returned with (0,0)
     private Vector3 lastInteract;
-    private ClearCounter selectedClearCounter;
+    private BaseCounter selectedCounter;
     public class OnSelectedClearCounterChangedEventArgs : EventArgs {
-    public  ClearCounter selectedClearCounter;
+    public  BaseCounter selectedCounter;
     }
     private void Awake() {
         if (Instance != null) Debug.LogError("There is more than single instance");
@@ -34,8 +34,8 @@ public class Player : MonoBehaviour,IKitchenObjectParent {
     }
 
     private void PlayerInput_OnInteractAction(object sender, System.EventArgs e) {
-        if (selectedClearCounter != null) {
-            selectedClearCounter.Interact(this);
+        if (selectedCounter != null) {
+            selectedCounter.Interact(this);
         }
     }
 
@@ -48,13 +48,13 @@ public class Player : MonoBehaviour,IKitchenObjectParent {
         Vector3 moveDir = new Vector3(inputVector.x, 0, inputVector.y);
         float interactDistance = 2f;
         if (Physics.Raycast(transform.position, lastInteract, out RaycastHit counter, interactDistance, layerMask)) {
-            if (counter.transform.TryGetComponent<ClearCounter>(out ClearCounter clearCounter)) {
-                if (selectedClearCounter != clearCounter) SetSelectedClearCounter(clearCounter);
+            if (counter.transform.TryGetComponent<BaseCounter>(out BaseCounter baseCounter)) {
+                if (selectedCounter != baseCounter) SetSelectedCounter(baseCounter);
             }
-            else SetSelectedClearCounter(null);
+            else SetSelectedCounter(null);
         }
         else {
-            SetSelectedClearCounter(null);
+            SetSelectedCounter(null);
         }
         if(moveDir != Vector3.zero)        lastInteract = moveDir;
     }
@@ -89,23 +89,24 @@ public class Player : MonoBehaviour,IKitchenObjectParent {
    public bool IsWalking() {
         return isWalking;
     }
-    private void SetSelectedClearCounter(ClearCounter selectedClearCounter) {
-        this.selectedClearCounter = selectedClearCounter;
+    private void SetSelectedCounter(BaseCounter selectedCounter) {
+        this.selectedCounter = selectedCounter;
         OnSelectedClearCounterChanged?.Invoke(this, new OnSelectedClearCounterChangedEventArgs
         {
-            selectedClearCounter = selectedClearCounter
+            selectedCounter = this.selectedCounter
         });
     }
     public Transform GetKitchenObjectFollowTransform() {
         return kitchenObjectHandHeld;
     }
-    public void ClearKitchenObjectParent() {
+    public KitchenObject GetKitchenObject() { return kitchenObject; }
+    public void ClearKitchenObjectInParent() {
         kitchenObject = null;
     }
-    public bool HasKitchenObjectParent() {
+    public bool HasKitchenObjectInParent() {
         return kitchenObject != null;
     }
-    public void SetKitchenObjectParent(KitchenObject kitchenObject) {
+    public void SetKitchenObjectInParent(KitchenObject kitchenObject) {
         this.kitchenObject = kitchenObject;
     }
 }
