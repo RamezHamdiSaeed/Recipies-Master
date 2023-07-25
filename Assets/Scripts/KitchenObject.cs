@@ -34,5 +34,8 @@ public class KitchenObject : MonoBehaviour
         kitchenObject.SetKitchenObjectParent(kitchenObjectParent);
         return kitchenObject;
     }
+    public KitchenObjectsSO GetKitchenObjectSO() {
+        return prefabKitchenObject;
+    }
 
 }

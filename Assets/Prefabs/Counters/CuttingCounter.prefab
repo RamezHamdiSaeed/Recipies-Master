@@ -322,4 +322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TopPoint: {fileID: 2751386831547473929}
-  kitchenObject: {fileID: 11400000, guid: cb3ee6084cc987649ad2b99103fc3f52, type: 2}
+  cuttingRecipes:
+  - {fileID: 11400000, guid: e2649b87cffff1249bae07fcd8cfcbe5, type: 2}
+  - {fileID: 11400000, guid: 62e9a49110dc66c4eb1917398ab00dd4, type: 2}
+  - {fileID: 11400000, guid: d832756305b4b2247a946e3cc6a8ef22, type: 2}

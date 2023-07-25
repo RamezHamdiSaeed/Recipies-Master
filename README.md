@@ -21,3 +21,4 @@ a 3D game do demonstrate the basics and advanced topics about unity like games n
 - How to implement Interact with Clear Counters and Container Counters.
 - How to make Prefab Variants (ContainerCounter_<KitchenObject>) from other Prefab Variant (Container Counter) 
 - How to InteractAlternate to cut tomato (just for now) in cutting counter 
+- How to InteractAlternate to the rest of cutable vegetable like cheese and cabbage
