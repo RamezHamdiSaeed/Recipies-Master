@@ -31,13 +31,20 @@ public class Player : MonoBehaviour,IKitchenObjectParent {
     }
     private void Start() {
         playerInput.OnInteractAction += PlayerInput_OnInteractAction;
+        playerInput.OnInteractAlternateAction += PlayerInput_OnInteractAlternateAction;
     }
-
     private void PlayerInput_OnInteractAction(object sender, System.EventArgs e) {
         if (selectedCounter != null) {
             selectedCounter.Interact(this);
         }
     }
+    private void PlayerInput_OnInteractAlternateAction(object sender, EventArgs e) {
+        if (selectedCounter != null && selectedCounter is CuttingCounter) {
+            selectedCounter.InteractAlternate(this);
+        }
+    }
+
+
 
     private void Update() {
      HandleMovement();
@@ -67,13 +74,16 @@ public class Player : MonoBehaviour,IKitchenObjectParent {
         bool canMove = !Physics.CapsuleCast(transform.position, transform.position + playerHeight * Vector3.up, playerRadius, moveDir, moveDistance);
         if (!canMove) {
             Vector3 moveDirX = new Vector3(moveDir.x, 0, 0).normalized;
-            canMove = !Physics.CapsuleCast(transform.position, transform.position + playerHeight * Vector3.up, playerRadius, moveDirX, moveDistance);
+            //! we have a problem which we cannot rotate toward the counter because the rotation won't apply when the player cannot move
+            //! so when i.g. we attempts to go forward (UP) then move diagonally to right the player will rotate without any problem but if we attempted to rotate again forward to the counter (UP) the player won't rotate 
+            //! so we need to add more condition to insure that the player will rotate according to the original moveDir
+            canMove = moveDir.x != 0 && !Physics.CapsuleCast(transform.position, transform.position + playerHeight * Vector3.up, playerRadius, moveDirX, moveDistance);
             if (canMove) {
                 moveDir = moveDirX;
             }
             else {
                 Vector3 moveDirZ = new Vector3(0, 0, moveDir.z).normalized;
-                canMove = !Physics.CapsuleCast(transform.position, transform.position + playerHeight * Vector3.up, playerRadius, moveDirZ, moveDistance);
+                canMove = moveDir.z != 0 && !Physics.CapsuleCast(transform.position, transform.position + playerHeight * Vector3.up, playerRadius, moveDirZ, moveDistance);
                 if (canMove) {
                     moveDir = moveDirZ;
                 }

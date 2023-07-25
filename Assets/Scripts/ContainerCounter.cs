@@ -11,8 +11,7 @@ public class ContainerCounter : BaseCounter
     private KitchenObjectsSO kitchenObject;
     public override void Interact(Player player) {
         if (!player.HasKitchenObjectInParent()) {
-                Transform kitchenObjectTransform = Instantiate(kitchenObject.prefab);
-                kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(player);
+            KitchenObject.SpawnKitchenObject(kitchenObject,player);
                 onContainerCounterInteract?.Invoke(this,EventArgs.Empty);
         }
         else Debug.Log("Player Has Picked Element");

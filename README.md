@@ -20,3 +20,4 @@ a 3D game do demonstrate the basics and advanced topics about unity like games n
 - How to make Prefab Variant from Prefab as a Base Prefab to create multiple prefabs from it (as a template) then we made Container Counter and make it and the cleare counter extends from the BaseCounter
 - How to implement Interact with Clear Counters and Container Counters.
 - How to make Prefab Variants (ContainerCounter_<KitchenObject>) from other Prefab Variant (Container Counter) 
+- How to InteractAlternate to cut tomato (just for now) in cutting counter 

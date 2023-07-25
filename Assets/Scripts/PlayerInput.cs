@@ -7,11 +7,17 @@ public class PlayerInput : MonoBehaviour
 {
     private GameInputActions playerInputs;
     public event EventHandler OnInteractAction;
+    public event EventHandler OnInteractAlternateAction;
     private void Awake() {
         //* we create global object to deal with inputActions related to player
         playerInputs = new GameInputActions();
         playerInputs.Player.Enable();
         playerInputs.Player.Interact.performed += Interact_performed;
+        playerInputs.Player.InteractAlternate.performed += InteractAlternate_performed;
+    }
+
+    private void InteractAlternate_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
+        OnInteractAlternateAction?.Invoke(this,EventArgs.Empty);
     }
 
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
