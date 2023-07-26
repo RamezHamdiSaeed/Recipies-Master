@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CounterContainerAnimator : MonoBehaviour
+public class ContainerCounterAnimator : MonoBehaviour
 {
     private ContainerCounter containerCounter;
     private const string OPEN_CLOSE = "OpenClose";
