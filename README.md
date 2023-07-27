@@ -23,3 +23,4 @@ a 3D game do demonstrate the basics and advanced topics about unity like games n
 - How to InteractAlternate to cut tomato (just for now) in cutting counter 
 - How to InteractAlternate to the rest of cutable vegetable like cheese and cabbage
 - How to add cut animation to CuttingRecipeInput with UI feedback (Bar)
+- How to make the progress bar face the camera in many ways.
