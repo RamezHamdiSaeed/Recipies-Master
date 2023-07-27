@@ -55,7 +55,7 @@ public class Player : MonoBehaviour,IKitchenObjectParent {
         Vector3 moveDir = new Vector3(inputVector.x, 0, inputVector.y);
         float interactDistance = 2f;
         if (Physics.Raycast(transform.position, lastInteract, out RaycastHit counter, interactDistance, layerMask)) {
-            if (counter.transform.TryGetComponent<BaseCounter>(out BaseCounter baseCounter)) {
+if (counter.transform.TryGetComponent<BaseCounter>(out BaseCounter baseCounter)) {
                 if (selectedCounter != baseCounter) SetSelectedCounter(baseCounter);
             }
             else SetSelectedCounter(null);
