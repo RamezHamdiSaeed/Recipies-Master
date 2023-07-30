@@ -3,13 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CuttingCounter : BaseCounter {
-    public float cuttingProgressNormalized;
-    public EventHandler onCuttingCounterInteract;
-    public EventHandler<OnCuttingCounterProgressEventArgs> onCuttingCounterProgress;
-    public class OnCuttingCounterProgressEventArgs : EventArgs {
-        public float progressNormalized;
-    }
+public class CuttingCounter : BaseCounter,IHasProgress {
+    public EventHandler onCuttingCounterInteract { get; set; }
+    //! we want to make a ref for any counter with progress bar so we mad the progress bar as a prefab
+    //! then made each of them implemented same Interface IHasProgress
+    public EventHandler<IHasProgress.OnCounterProgressEventArgs> OnCounterProgress { get; set; }
     [SerializeField]
     private CuttingRecipesSO[] cuttingRecipes;
     private int cuttingProgress;
@@ -22,7 +20,7 @@ public class CuttingCounter : BaseCounter {
                 cuttingProgress = 0;
             KitchenObjectsSO kitchenObjectSOInput = GetKitchenObject().GetKitchenObjectSO();
             CuttingRecipesSO parentCuttingRecipe = GetCuttingRecipe(kitchenObjectSOInput);
-                onCuttingCounterProgress?.Invoke(this,new OnCuttingCounterProgressEventArgs { progressNormalized = (float)cuttingProgress / parentCuttingRecipe.cuttingProgressMax });
+                OnCounterProgress?.Invoke(this,new IHasProgress.OnCounterProgressEventArgs { progressNormalized = (float)cuttingProgress / parentCuttingRecipe.cuttingProgressMax });
             }
             else Debug.Log("attempts to put non CuttingRecipesSO.input (KitchenObjectsSO) ");
         }
@@ -37,7 +35,7 @@ public class CuttingCounter : BaseCounter {
         if (HasKitchenObjectInParent()&& HasRecipeWithInput(GetKitchenObject().GetKitchenObjectSO())) {
             KitchenObjectsSO kitchenObjectSOInput = GetKitchenObject().GetKitchenObjectSO();
             CuttingRecipesSO parentCuttingRecipe = GetCuttingRecipe(kitchenObjectSOInput);
-            onCuttingCounterProgress?.Invoke(this, new OnCuttingCounterProgressEventArgs { progressNormalized = (float)cuttingProgress / parentCuttingRecipe.cuttingProgressMax });
+            OnCounterProgress?.Invoke(this, new IHasProgress.OnCounterProgressEventArgs { progressNormalized = (float)cuttingProgress / parentCuttingRecipe.cuttingProgressMax });
         
             if (cuttingProgress >= parentCuttingRecipe.cuttingProgressMax) {
                 KitchenObjectsSO outPutKitchenObjectSO = GetOutputForInput(kitchenObjectSOInput);

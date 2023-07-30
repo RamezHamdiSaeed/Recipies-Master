@@ -39,7 +39,7 @@ public class Player : MonoBehaviour,IKitchenObjectParent {
         }
     }
     private void PlayerInput_OnInteractAlternateAction(object sender, EventArgs e) {
-        if (selectedCounter != null && selectedCounter is CuttingCounter) {
+        if (selectedCounter != null && (selectedCounter is CuttingCounter||selectedCounter is StoveCounter)) {
             selectedCounter.InteractAlternate(this);
         }
     }

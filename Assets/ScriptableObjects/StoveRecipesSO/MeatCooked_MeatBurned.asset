@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4f2dcab6806c54eb1b22de6ca5d0b2, type: 3}
+  m_Name: MeatCooked_MeatBurned
+  m_EditorClassIdentifier: 
+  input: {fileID: 11400000, guid: 2508884ca61d3a04e9d85fdacad88441, type: 2}
+  output: {fileID: 11400000, guid: acb44bba28070894abfec3b6fe12e597, type: 2}
+  friedProgressMax: 5
