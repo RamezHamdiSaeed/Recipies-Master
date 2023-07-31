@@ -26,3 +26,4 @@ a 3D game do demonstrate the basics and advanced topics about unity like games n
 - How to make the progress bar face the camera in many ways.
 - How to make a Trash Counter to destroy the KitchenObject which is hand held by the player.
 - How to make a Stove Counter to cook cookable ingredients using State machine (Swith case statement)
+- How to make a Plate Counter and spown plate after 4 seconds till there would be 5 plates at moset and the player can take one plate

@@ -10,7 +10,7 @@ public class KitchenObject : MonoBehaviour
     private KitchenObjectsSO prefabKitchenObject;
     private IKitchenObjectParent kitchenObjectParent;
     public void SetKitchenObjectParent(IKitchenObjectParent kitchenObjectParent) {
-        if (this.kitchenObjectParent != null) this.kitchenObjectParent.ClearKitchenObjectInParent();
+        this.kitchenObjectParent?.ClearKitchenObjectInParent();
         this.kitchenObjectParent = kitchenObjectParent;
         if (this.kitchenObjectParent.HasKitchenObjectInParent()) {
             Debug.LogError("the target has spawnKitchenObject");
